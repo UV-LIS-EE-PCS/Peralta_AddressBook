@@ -31,8 +31,11 @@ public class AddressBook {
     public void readContacts(){
 
     }
+    public List<AddressEntry> getEntries() {
+        return new ArrayList<>(entries);
+    }
     public void displayEntries() {
-        for (AdressEntry entry : entries) {
+        for (AddressEntry entry : entries) {
             System.out.println(entry);
         }
     }

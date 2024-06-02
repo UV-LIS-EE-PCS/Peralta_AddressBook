@@ -85,8 +85,17 @@ public class AddressEntry {
         return phoneNumber;
     }
 
-    public String toString(){
-        return "datos";
+    @Override
+    public String toString() {
+        return "AddressEntry{" +
+                "nombre='" + name + '\'' +
+                ", apellido='" + lastName + '\'' +
+                ", calle='" + street + '\'' +
+                ", ciudad='" + city + '\'' +
+                ", estado='" + state + '\'' +
+                ", codigoPostal='" + postalCode + '\'' +
+                ", correoElectronico='" + email + '\'' +
+                ", telefono='" + phoneNumber + '\'' +
+                '}';
     }
-
 }
