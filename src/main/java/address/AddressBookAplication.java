@@ -8,14 +8,19 @@ import java.util.Scanner;
 public class AddressBookAplication {
     public static void main(String [] args){
 
-        AddressBook addressBook = new AddressBook();
+        Scanner input = new Scanner(System.in);
+        Menu menu = new Menu();
 
-        AddressEntry entry1 = new AddressEntry("Juan","Perez", "Calle Cinco 5", "Cardenas", "Tabasco","86500","juan.perez@example.com","9373711234");
-        AddressEntry entry2 = new AddressEntry("Pablito","Ozuna","Calle Lagunas 3","Coatzacoalcos","Veracruz","96500","Pablito.Ozuna@example.com","9221701313");
+        do {
+            menu.displayMenu();
+            char userInput = input.next().toLowerCase().charAt(0);
 
-        addressBook.addEntry(entry1);
-        addressBook.addEntry(entry2);
+            switch (userInput) {
+                //Upload file option
+                case 'a':
 
-        addressBook.displayEntries();
+            }
+
+        } while (true);
     }
 }
