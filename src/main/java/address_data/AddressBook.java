@@ -1,12 +1,9 @@
 package address_data;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Comparator;
-
+import java.util.stream.Collectors;
+import java.io.*;
 public class AddressBook {
 
     private List<AddressEntry> entries;
@@ -18,24 +15,29 @@ public class AddressBook {
     public void addEntry(AddressEntry entry){
         entries.add(entry);
     }
-    public void removeEntry(AddressEntry entry) {
-        entries.remove(entry);
+    public void removeEntry(String apellido) {
+        entries = entries.stream()
+                .filter(entry -> !entry.getLastName().equalsIgnoreCase(apellido))
+                .collect(Collectors.toList());
     }
     public void readFromFile(String filename) {
-        try (BufferedReader BR = new BufferedReader(new FileReader(filename))) {
-            String[] newContacts = new String[8];
-            int index = 0;
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(filename).getFile());
+
+        try (BufferedReader BR = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = BR.readLine()) != null) {
-                String[] fragments = line.split("\n");
-                newContacts[index] = fragments[0];
-                index++;
+                String[] newContacts = line.split(","); // Asumiendo que los campos están separados por comas
+                if (newContacts.length == 8) {
+                    AddressEntry entry = new AddressEntry(newContacts[0], newContacts[1], newContacts[2], newContacts[3], newContacts[4], newContacts[5], newContacts[6], newContacts[7]);
+                    addEntry(entry);
+                } else {
+                    System.err.println("Invalid entry format: " + line);
+                }
             }
-            AddressEntry entry = new AddressEntry(newContacts[0], newContacts[1], newContacts[2], newContacts[3], newContacts[4], newContacts[5], newContacts[6], newContacts[7]);
-            addEntry(entry);
             System.out.println("The file has been uploaded successfully");
         } catch (IOException e) {
-            System.err.println("Something has gone wrong, try again" + e.getMessage());
+            System.err.println("Something has gone wrong, try again " + e.getMessage());
         }
     }
     public AddressEntry findEntryByLastName(String lastName) {
@@ -46,11 +48,10 @@ public class AddressBook {
         }
         return null;
     }
-    public String search(){
-        return "0";
-    }
-    public void readContacts(){
-
+    public List<AddressEntry> searchEntry(String apellido) {
+        return entries.stream()
+                .filter(entry -> entry.getLastName().equalsIgnoreCase(apellido))
+                .collect(Collectors.toList());
     }
     public List<AddressEntry> getEntries() {
         return new ArrayList<>(entries);

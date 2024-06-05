@@ -87,15 +87,8 @@ public class AddressEntry {
 
     @Override
     public String toString() {
-        return "AddressEntry{" +
-                "nombre='" + name + '\'' +
-                ", apellido='" + lastName + '\'' +
-                ", calle='" + street + '\'' +
-                ", ciudad='" + city + '\'' +
-                ", estado='" + state + '\'' +
-                ", codigoPostal='" + postalCode + '\'' +
-                ", correoElectronico='" + email + '\'' +
-                ", telefono='" + phoneNumber + '\'' +
-                '}';
+        return "Name: " + name + ", Last Name: " + lastName + ", Street: " + street + ", City: " + city +
+                ", State: " + state + ", Postal Code: " + postalCode + ", Email: " + email +
+                ", Phone Number: " + phoneNumber;
     }
 }
