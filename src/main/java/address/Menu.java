@@ -5,8 +5,17 @@ import address_data.AddressEntry;
 
 import java.util.List;
 import java.util.Scanner;
+/**
+ * Representa el menú de opciones para interactuar con un libro de direcciones.
+ */
 public class Menu {
 
+    /**
+     * Muestra el menú y maneja las diferentes opciones.
+     *
+     * @param addressBook el libro de direcciones
+     * @param scanner     el objeto Scanner para leer la entrada del usuario
+     */
     public void displayMenu(AddressBook addressBook, Scanner scanner) {
         scanner = new Scanner(System.in);
         while (true) {
@@ -51,6 +60,12 @@ public class Menu {
             }
         }
     }
+    /**
+     * Crea una nueva entrada de dirección a partir de la entrada del usuario.
+     *
+     * @param scanner el objeto Scanner para leer la entrada del usuario
+     * @return la nueva entrada de dirección creada
+     */
 
     private AddressEntry createAddressEntry(Scanner scanner) {
         System.out.print("Nombre: ");

@@ -1,5 +1,8 @@
 package address_data;
 
+/**
+ * Representa una entrada a AddressBook.
+ */
 public class AddressEntry {
     private String name;
     private String lastName;
@@ -9,6 +12,19 @@ public class AddressEntry {
     private String postalCode;
     private String email;
     private String phoneNumber;
+
+    /**
+     * Construye un objeto AddressEntry con los detalles especificados.
+     *
+     * @param name        el nombre de la persona
+     * @param lastName    el apellido de la persona
+     * @param street      la dirección de la calle
+     * @param city        la ciudad
+     * @param state       el estado o provincia
+     * @param postalCode  el código postal
+     * @param email       la dirección de correo electrónico
+     * @param phoneNumber el número de teléfono
+     */
 
     public AddressEntry(String name, String lastName, String street, String city, String state, String postalCode, String email, String phoneNumber) {
         this.name = name;
@@ -21,6 +37,7 @@ public class AddressEntry {
         this.phoneNumber = phoneNumber;
     }
 
+    // Inician todos los getters y setters
     public void setName(String name) {
         this.name = name;
     }
@@ -85,10 +102,13 @@ public class AddressEntry {
         return phoneNumber;
     }
 
+    // Terminan todos los getters y setters
+
+    // Devuelve los registros en forma amigable con el usuario
     @Override
     public String toString() {
-        return "Name: " + name + ", Last Name: " + lastName + ", Street: " + street + ", City: " + city +
-                ", State: " + state + ", Postal Code: " + postalCode + ", Email: " + email +
-                ", Phone Number: " + phoneNumber;
+        return "Name: " + name + "\n" + "Last Name: " + lastName + "\n" + "Street: " + street + "\n" + "City: " + city +
+                "\n" + "State: " + state + "\n" + "Postal Code: " + postalCode + "\n" + "Email: " + email + "\n" +
+                "Phone Number: " + phoneNumber + "\n" + "\n";
     }
 }

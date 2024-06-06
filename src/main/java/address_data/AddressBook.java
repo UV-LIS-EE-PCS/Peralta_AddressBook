@@ -4,14 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.io.*;
+/**
+ * Esta clase representa un libro de direcciones.
+ */
 public class AddressBook {
 
     private List<AddressEntry> entries;
 
+    /**
+     * Constructor de AddressBook.
+     */
     public AddressBook() {
         this.entries = new ArrayList<>();
     }
 
+    /**
+     * Agrega una entrada a la libreta de direcciones.
+     *
+     * @param entry la entrada de dirección a agregar
+     */
     public void addEntry(AddressEntry entry){
         entries.add(entry);
     }
